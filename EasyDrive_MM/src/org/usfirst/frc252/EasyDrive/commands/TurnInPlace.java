@@ -26,9 +26,19 @@ public class TurnInPlace extends Command{
 
 
 
-/**
-*
-*/
+	/**
+	 *
+	 * This command turns the robot in place and used the gyro to know how far it is turned.
+	 * 
+	 * Arguments
+	 * 
+	 * angle - desired angle to turn the robot in degrees.  Straight forward is 0 degrees.  
+	 * 			Left turn is a positive angle
+	 * 			Right turn is a negative angle
+	 * 
+	 * 
+	 */
+
 
  public TurnInPlace(double angle, double kP, double kI, double kD) {
 

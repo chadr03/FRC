@@ -8,7 +8,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SetTurn extends Command {
 
 	
-	
+	/*
+	 * This command is pulls inputs from the smart dashboard and then passes them into arguments
+	 * into the TurnInPlace command.
+	 * 
+	 */
 	
 	
 

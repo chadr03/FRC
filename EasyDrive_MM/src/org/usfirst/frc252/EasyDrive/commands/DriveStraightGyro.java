@@ -4,6 +4,16 @@ import org.usfirst.frc252.EasyDrive.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+//This command uses a gyro to drive straight for a specified time
+//
+//Arguments
+//waitTime - The length of time in seconds that this command will drive straight
+//power - The motor input power [-1 to 1]
+//kP - is a proportional constant used to tune the gyro.  If this value is too high or too low
+//     the gyro can over or undercorrect causing weaving or overshoot.
+
+
+
 public class DriveStraightGyro extends Command {
 	private final double waitTime;
 	private final double power;
@@ -18,7 +28,7 @@ public class DriveStraightGyro extends Command {
     }
 
     protected void initialize() {
-        setTimeout(waitTime);  // set 4 second timeout
+        setTimeout(waitTime); 
         Robot.driveTrain.zeroGyro();
     }
 

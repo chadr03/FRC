@@ -13,8 +13,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc252.EasyDrive.RobotMap;
 
 /**
- * Drive over the line and then shoot the ball. If the hot goal is not detected,
- * it will wait briefly.
+ * 
+ * This command group performs a series of commands
+ * 
+ * 
+ * 
  */
 public class RunCommands extends CommandGroup {
 	public RunCommands() {

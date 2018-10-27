@@ -5,6 +5,13 @@ import org.usfirst.frc252.EasyDrive.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/*
+ * This command is pulls inputs from the smart dashboard and then passes them into arguments
+ * into the DriveStraightDistanceGyro command.
+ * 
+ */
+
+
 public class SetDriveStraightDistanceGyro extends Command {
 
 	
