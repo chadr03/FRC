@@ -35,6 +35,8 @@ public class NormalDrive extends Command {
     	Robot.driveTrain.drive(Robot.oi.getJoystick());
     	SmartDashboard.putNumber("Yaw", Robot.driveTrain.gyroInfo()[0]);
       	SmartDashboard.putNumber("Heading", Robot.driveTrain.getHeading());
+      	SmartDashboard.putNumber("PixyX", Robot.driveTrain.getPixyX());
+      	SmartDashboard.putBoolean("PixyTarget", Robot.driveTrain.getPixyTarget());
     
     }
 

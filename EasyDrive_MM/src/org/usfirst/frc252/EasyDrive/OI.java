@@ -78,6 +78,7 @@ public class OI {
         SmartDashboard.putData("Drive Straight", new SetDriveStraightGyro());
         SmartDashboard.putData("Drive Str. Distance", new SetDriveStraightDistanceGyro());
         SmartDashboard.putData("Do Things", new RunCommands());
+        SmartDashboard.putData("AutoCheck", new AutoSelect());
         
         
         
