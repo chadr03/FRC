@@ -82,6 +82,7 @@ public class OI {
         SmartDashboard.putData("Do Things", new RunCommands());
         SmartDashboard.putData("AutoCheck", new AutoSelect());
         SmartDashboard.putData("Pixy", new SetPixyTrack());
+        SmartDashboard.putData("Follow", new Follow());
         
         
         
