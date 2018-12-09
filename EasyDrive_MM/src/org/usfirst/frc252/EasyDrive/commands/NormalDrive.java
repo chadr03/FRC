@@ -33,14 +33,13 @@ public class NormalDrive extends Command {
     @Override
     protected void execute() {
     	Robot.driveTrain.drive(Robot.oi.getJoystick());
-    	SmartDashboard.putNumber("Yaw", Robot.driveTrain.gyroInfo()[0]);
-      	SmartDashboard.putNumber("Heading", Robot.driveTrain.getHeading());
-      	SmartDashboard.putNumber("Angle", Robot.driveTrain.getAngle());
-      	SmartDashboard.putNumber("PixyX", Robot.driveTrain.getPixyX());
-      	SmartDashboard.putBoolean("PixyTarget", Robot.driveTrain.getPixyTarget());
-	  	SmartDashboard.putNumber("Left Encoder Distance, in", Robot.driveTrain.getLeftPositionInch());
-	  	SmartDashboard.putNumber("Right Encoder Distance, in", Robot.driveTrain.getRightPositionInch());
-	
+//    	SmartDashboard.putNumber("Yaw", Robot.driveTrain.gyroInfo()[0]);
+//      	SmartDashboard.putNumber("Heading", Robot.driveTrain.getHeading());
+//      	SmartDashboard.putNumber("PixyX", Robot.driveTrain.getPixyX());
+//      	SmartDashboard.putBoolean("PixyTarget", Robot.driveTrain.getPixyTarget());
+//	  	SmartDashboard.putNumber("Left Encoder Distance, in", Robot.driveTrain.getLeftPositionInch());
+//	  	SmartDashboard.putNumber("Right Encoder Distance, in", Robot.driveTrain.getRightPositionInch());
+//    	SmartDashboard.putNumber("Angle", Robot.driveTrain.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()

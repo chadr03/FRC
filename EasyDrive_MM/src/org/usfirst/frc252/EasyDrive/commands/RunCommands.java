@@ -22,11 +22,15 @@ import org.usfirst.frc252.EasyDrive.RobotMap;
 public class RunCommands extends CommandGroup {
 	public RunCommands() {
 		addSequential(new Pause(3));
-		addSequential(new DriveStraightDistanceGyro(5000,
+		addSequential(new DriveStraightDistanceGyro(36,
 													RobotMap.kPdriveDistance,
 													RobotMap.kIdriveDistance,
 													RobotMap.kDdriveDistance));
-		addSequential(new DriveStraightDistanceGyro(-3000,
+		addSequential(new TurnInPlace(90,
+				  RobotMap.kPturn,
+				  RobotMap.kIturn,
+				  RobotMap.kDturn));		
+		addSequential(new DriveStraightDistanceGyro(12,
 													RobotMap.kPdriveDistance,
 													RobotMap.kIdriveDistance,
 													RobotMap.kDdriveDistance));
@@ -34,15 +38,19 @@ public class RunCommands extends CommandGroup {
 									  RobotMap.kPturn,
 									  RobotMap.kIturn,
 									  RobotMap.kDturn));
-		addSequential(new DriveStraightDistanceGyro(3000,
+		addSequential(new DriveStraightDistanceGyro(36,
 													RobotMap.kPdriveDistance,
 													RobotMap.kIdriveDistance,
 													RobotMap.kDdriveDistance));
-		addSequential(new DriveStraightDistanceGyro(-3000,
+		addSequential(new TurnInPlace(90,
+				  RobotMap.kPturn,
+				  RobotMap.kIturn,
+				  RobotMap.kDturn));
+		addSequential(new DriveStraightDistanceGyro(12,
 													RobotMap.kPdriveDistance,
 													RobotMap.kIdriveDistance,
 													RobotMap.kDdriveDistance));
-		addSequential(new TurnInPlace(-90,
+		addSequential(new TurnInPlace(90,
 				  					  RobotMap.kPturn,
 				  					  RobotMap.kIturn,
 				  					  RobotMap.kDturn));

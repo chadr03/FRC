@@ -88,8 +88,20 @@ public class DriveTrain extends Subsystem{
       
 
         setDefaultCommand(new NormalDrive());
+		leftMotor.setSensorPhase(true);
+		leftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		leftMotor.configSelectedFeedbackCoefficient(	1.0, 						// Coefficient
+				Constants.PID_PRIMARY,		// PID Slot of Source 
+				Constants.kTimeoutMs);		// Configuration Timeout
+		rightMotor.configSelectedFeedbackCoefficient(	1.0, 						// Coefficient
+				Constants.PID_PRIMARY,		// PID Slot of Source 
+				Constants.kTimeoutMs);		// Configuration Timeout
+		
+		rightMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
         leftMotor.setSafetyEnabled(false);
         rightMotor.setSafetyEnabled(false);
+        leftMotor.configPulseWidthPeriod_EdgesPerRot(1, 10);
+        rightMotor.configPulseWidthPeriod_EdgesPerRot(1,10);
 
     }
 
@@ -101,7 +113,7 @@ public class DriveTrain extends Subsystem{
 
     public void drive(double forward, double twist) {
     	//differentialDrive1.tankDrive(left, right);
-    	differentialDrive1.arcadeDrive(forward, twist, true);
+    	differentialDrive1.arcadeDrive(forward, .5*twist, true);
     	
     	
     	
@@ -110,7 +122,27 @@ public class DriveTrain extends Subsystem{
     public void tank(double left, double right) {
     	differentialDrive1.tankDrive(left, right, true);
     }
+    public void tankEasyDrive(double left, double right) {
+    	double maxSpeed=0.5;
+    	if (left<=0) {
+    		left=Math.max(-1*maxSpeed, left);
+    	}
+    	else {
+    		left=Math.min(maxSpeed, left);
+    	}
+    	if (right<=0) {
+    		right=Math.max(-1*maxSpeed, right);
+    	}
+    	else {
+    		right=Math.min(maxSpeed, right);
+    	}
+    	
+    	
+    	differentialDrive1.tankDrive(-left, -right);//-left,-right
+    }
 
+    
+    
 	/**
 	 * Tank style driving for the DriveTrain.
 	 *
@@ -142,7 +174,7 @@ public class DriveTrain extends Subsystem{
 		if(angle<0) {
 			angle=360.0 + angle;
 		}
-		return angle;
+		return 360-angle; //360-angle
 	}
 	
 	public double getYawRate() {
@@ -161,12 +193,18 @@ public class DriveTrain extends Subsystem{
 	
 	public void zeroSensors() {
 		leftMotor.getSensorCollection().setQuadraturePosition(0, Constants.kTimeoutMs);
-		leftMotor.setSensorPhase(true);
+		//leftMotor.setSensorPhase(true);
 		rightMotor.getSensorCollection().setQuadraturePosition(0, Constants.kTimeoutMs);
 		imu.setYaw(0, 0);
 		imu.setAccumZAngle(0, 0);
 		imu.setFusedHeading(0, 0);
 		System.out.println("Sensors Zeroed");
+	}
+	public void zeroEncoders() {
+		leftMotor.getSensorCollection().setQuadraturePosition(0, Constants.kTimeoutMs);
+		//leftMotor.setSensorPhase(true);
+		rightMotor.getSensorCollection().setQuadraturePosition(0, Constants.kTimeoutMs);
+		
 	}
 	
     public double getDashboardTurn() {

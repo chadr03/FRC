@@ -68,9 +68,9 @@ public class OI {
         x_button = new JoystickButton(joystick, 1);
         x_button.whenPressed(new ZeroSensors());
         btn2 = new JoystickButton(joystick, 2);
-        btn2.whileHeld(new SetDriveStraightGyro());
+        btn2.whenPressed(new NormalDrive());
         btn3 = new JoystickButton(joystick, 3);
-        btn3.whileHeld(new SetPixyTrack());
+        btn3.whenPressed(new Follow());
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

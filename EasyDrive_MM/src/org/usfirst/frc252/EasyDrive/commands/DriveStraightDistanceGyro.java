@@ -16,7 +16,7 @@ public class DriveStraightDistanceGyro extends Command{
 	private final PIDController m_pid;
 
 //This command will drive the robot straight forward or backward for a given distance using a pid loop that will
-//track the number of encoder counts on the leftTalon.  It will also use the gyro to equalize the speed of the 
+//track the number of inches traveled by using encoder counts on the leftTalon.  It will also use the gyro to equalize the speed of the 
 //two sides to the differential drive
 
 
@@ -35,7 +35,7 @@ public class DriveStraightDistanceGyro extends Command{
 
          @Override
          public double pidGet() {
-           return Robot.driveTrain.getLeftPosition();
+           return Robot.driveTrain.getLeftPositionInch();
          }
 
          @Override
@@ -51,8 +51,8 @@ public class DriveStraightDistanceGyro extends Command{
  	   }, d -> Robot.driveTrain.driveStraightGyro(d, RobotMap.kPdriveGyro));
 
      
-     m_pid.setAbsoluteTolerance(100);
-     m_pid.setToleranceBuffer(100);
+     m_pid.setAbsoluteTolerance(0.5);
+     m_pid.setToleranceBuffer(10);
      m_pid.setSetpoint(distance);
      m_pid.setOutputRange(-0.5, 0.5);
  
@@ -75,7 +75,7 @@ public class DriveStraightDistanceGyro extends Command{
   	SmartDashboard.putNumber("Distance Error", m_pid.getError());
   	SmartDashboard.putBoolean("Distance PID is On Target", m_pid.onTarget());
   	SmartDashboard.putBoolean("Distance PID is Executing", m_pid.isEnabled());
-  	SmartDashboard.putNumber("Encoder Value", Robot.driveTrain.getLeftPosition());
+  	
  
  }
 

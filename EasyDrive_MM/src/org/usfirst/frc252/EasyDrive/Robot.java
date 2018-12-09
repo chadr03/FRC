@@ -22,6 +22,7 @@ import org.usfirst.frc252.EasyDrive.subsystems.*;
 
 import easypath.EasyPath;
 import easypath.EasyPathConfig;
+import easypath.PathUtil;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -61,12 +62,13 @@ public class Robot extends TimedRobot {
 //            );
         EasyPathConfig config = new EasyPathConfig(
                 driveTrain, // the subsystem itself
-                driveTrain::tank, // function to set left/right speeds
+                driveTrain::tankEasyDrive, // function to set left/right speeds
                 // function to give EasyPath the length driven
-                driveTrain::getAvgPositionInch,
+                //driveTrain::getRightPositionInch,
+                () -> PathUtil.defaultLengthDrivenEstimator(driveTrain::getLeftPositionInch, driveTrain::getRightPositionInch),
                 driveTrain::getAngle, // function to give EasyPath the heading of your robot
                 driveTrain::zeroSensors, // function to reset your encoders to 0
-                0.07 // kP value for P loop
+                0.09 // kP value for P loop
             );
         
         
@@ -75,8 +77,8 @@ public class Robot extends TimedRobot {
         
             // OPTIONAL
             // If your robot is turning or driving the wrong directions, try one or both of these:
-            config.setSwapDrivingDirection(false);
-            config.setSwapTurningDirection(false);
+            config.setSwapDrivingDirection(false); //false 
+            config.setSwapTurningDirection(false);  //false
             
             
             // Now, give EasyPath your configuration and you are all set
@@ -119,7 +121,10 @@ public class Robot extends TimedRobot {
 	  	
 	  	SmartDashboard.putNumber("Left Encoder Distance, in", Robot.driveTrain.getLeftPositionInch());
 	  	SmartDashboard.putNumber("Right Encoder Distance, in", Robot.driveTrain.getRightPositionInch());
-	      	  
+	    
+	  	SmartDashboard.putNumber("Left Encoder Clicks", Robot.driveTrain.getLeftPosition());
+	  	SmartDashboard.putNumber("Right Encoder Clicks", Robot.driveTrain.getRightPosition());
+	    SmartDashboard.putNumber("Angle", Robot.driveTrain.getAngle());  	  
        
     }
 
@@ -169,7 +174,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
+	  	SmartDashboard.putNumber("Left Encoder Distance, in", Robot.driveTrain.getLeftPositionInch());
+	  	SmartDashboard.putNumber("Right Encoder Distance, in", Robot.driveTrain.getRightPositionInch());
+	  	SmartDashboard.putNumber("Left Encoder Clicks", Robot.driveTrain.getLeftPosition());
+	  	SmartDashboard.putNumber("Right Encoder Clicks", Robot.driveTrain.getRightPosition());
+	    SmartDashboard.putNumber("Angle", Robot.driveTrain.getAngle()); 
     }
 
 }
